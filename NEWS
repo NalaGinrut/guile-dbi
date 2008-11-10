@@ -1,0 +1,44 @@
+Guile DBD MySql NEWS --- history of user-visible changes.
+Copyright (C) 2005,2006 Free Software Foundation, Inc.
+See the end for copying conditions.
+
+Please send Guile bug reports to guile-dbi-devel@gna.org or 
+
+https://gna.org/bugs/?group=guile-dbi
+
+
+
+Changes in Guile DBD MySql 2.0.0:
+
+* Fix api to guile 1.8
+
+
+
+Changes in Guile DBD MySql 1.0.4:
+
+* Implement automatic reconnection after a db server failure
+  (ex. broken socket, network down etc...). The number 
+  of reconnection attempt is set by an optional parameter
+  in the connection string, if omitted no attempt is done.
+
+* Add connection string format in the README file.
+
+
+
+Changes in Guile DBD MySql 1.0.3:
+
+* Fixed a bug in connection handling (open/close).
+
+
+
+Changes in Guile DBD MySql 1.0.2:
+
+* Fixed a bug in connection string parsing.
+
+
+
+Changes in Guile DBD MySql 1.0.1:
+
+* Assign copyright to FSF.
+
+

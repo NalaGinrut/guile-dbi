@@ -1,0 +1,73 @@
+README - info file
+Copyright (C) 2005 Free Software Foundation, Inc.
+Written by Maurizio Boriani <baux@member.fsf.org>
+
+This file is part of the guile-dbi.
+ 
+The guile-dbi is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+ 
+The guile-dbi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+
+Process this file with autoconf to produce a configure script.
+
+
+* About
+
+ guile-dbi is a database generic interface. Provide a way to use dbds
+ (data base drivers) which are linked at run-time (like perl dbi or php
+ or...)  for query different database engines always in the same way.
+
+ Please send bug reports to https://gna.org/bugs/?group=guile-dbi or
+ guile-dbi-devel@gna.org
+
+
+* Guile DBI Documentation
+
+ The doc directory contains the reference manual  and some examples.
+
+ The www pages are at http://www.gnu.org/software/guile-dbi or
+ http://home.gna.org/guile-dbi/
+
+ The project page is at: http://www.gna.org/projects/guile-dbi.
+
+* About this driver
+
+ This is the driver used to connect to mysql database servers.
+ 
+ Connection string format:
+
+ <user>:<pass>:<db name>:<connection type>:<path or ip>:[port]:[recon attemps]
+
+ Note: <connection type> must be tcp or socket
+ <path or ip> specify the path of the socket or the ip address of the server
+ <port> is used only if the connection type is tcp
+ <recon attempts>: optional. Number of reconnection attempts after a db 
+ connection failure. Default, if omitted, is 0 (no reconnection will be
+ attempted).
+
+* Guile DBI License
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2, or (at your option)
+ any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this software; see the file COPYING.  If not, write to
+ the Free Software Foundation, Inc., 59 Temple Place, Suite 330,
+ Boston, MA 02111-1307 USA

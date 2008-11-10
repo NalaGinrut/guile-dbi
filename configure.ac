@@ -1,15 +1,15 @@
-# configure.ac - Configure script for the guile-dbd-postgresql.
-# Copyright (C) 2004, 2005, 2006 Free Software Foundation, Inc.
+# configure.ac - Configure script for the guile-dbd-mysql.
+# Copyright (C) 2004, 2005 Free Software Foundation, Inc.
 # Written by Maurizio Boriani <baux@member.fsf.org>
 #
-# This file is part of the guile-dbd-postgresql.
+# This file is part of the guile-dbd-mysql.
 # 
-# The guile-dbd-postgresql is free software; you can redistribute it and/or modify
+# The guile-dbd-mysql is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 # 
-# The guile-dbd-postgresql is distributed in the hope that it will be useful,
+# The guile-dbd-mysql is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
@@ -38,15 +38,9 @@ AC_PROG_LIBTOOL
 AC_CHECK_TOOL([AR], [ar], :)
 AC_CHECK_TOOL([NM], [nm], :)
 
-AC_CHECK_FUNCS([strerror])
-AC_CHECK_FUNCS([strndup]) 
-AC_CHECK_HEADERS([string.h])
-AC_FUNC_MALLOC
-AC_HEADER_STDC
-
-# Checks for libs.
-AC_CHECK_LIB(pq,PQconnectStart,,
-        AC_MSG_ERROR([*** Can't find libpq]))
+# Checks for libs
+AC_CHECK_LIB(mysqlclient,mysql_init,,
+        AC_MSG_ERROR([*** Can't find libmysql]))
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CANONICAL_HOST
