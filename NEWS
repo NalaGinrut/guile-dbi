@@ -1,0 +1,37 @@
+Guile DBD Postgresql NEWS --- history of user-visible changes.
+Copyright (C) 2005, 2006 Free Software Foundation, Inc.
+See the end for copying conditions.
+
+Please send Guile bug reports to guile-dbi-devel@gna.org or 
+
+https://gna.org/bugs/?group=guile-dbi
+
+
+
+Changes in Guile DBD Postgresql 2.0.0:
+
+* Fix deprecated guile 1.6 api with newer 1.8.
+
+
+Changes in Guile DBD Postgresql 1.0.3:
+
+* Implement automatic reconnection after a db server failure
+  (ex. broken socket, network down etc...). The number 
+  of reconnection attempt is set by an optional parameter
+  in the connection string, if omitted no attempt is done.
+
+* Improved query return values check.
+
+* Add connection string format in the README file.
+
+
+
+Changes in Guile DBD Postgresql 1.0.2:
+
+* Fix a connection handling bug.
+
+
+
+Changes in Guile DBD Postgresql 1.0.1:
+
+* Assign copyright to FSF.
