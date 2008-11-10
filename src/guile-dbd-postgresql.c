@@ -146,7 +146,7 @@ __postgresql_make_g_db_handle(gdbi_db_handle_t* dbh)
           PQfinish(pgsqlP->pgsql);
           pgsqlP->pgsql = NULL;
           free(pgsqlP);
-          dbh->db_info = NULL;
+          dbh->db_info=NULL;
           dbh->closed = SCM_BOOL_T;
           return;
         }
