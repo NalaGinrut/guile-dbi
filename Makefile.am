@@ -26,4 +26,4 @@ ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = gnu
 SUBDIRS = src
 
-EXTRA_DIST= DBD-VERSION autogen.sh
+EXTRA_DIST= DBD-VERSION autogen.sh test-guile-dbd-sqlite3.scm

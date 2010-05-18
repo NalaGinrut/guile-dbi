@@ -8,9 +8,13 @@ README - info file
   <database name>
 
 
+To test: run 
+	guile test-guile-dbd-sqlite3.scm
+
 Maintainer hints:
 
 	To build a clean, fresh tool envirnoment:
+	Run ./autogen.sh or:
 
 		libtoolize
 		aclocal
