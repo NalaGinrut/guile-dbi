@@ -1,6 +1,6 @@
 \input texinfo  @c -*-texinfo-*-
 
-@c Copyright (C) 2004, 2005, 2008 Free Software Foundation, Inc.
+@c Copyright (C) 2004, 2005, 2008, 2010 Free Software Foundation, Inc.
 
 @c %**start of header
 @setfilename guile-dbi.info
@@ -13,9 +13,8 @@
 @end direntry
 
 Guile DBI Manual
-Copyright (C) 2004 Maurizio Boriani@*
-Copyright (C) 2005 Maurizio Boriani@*
-Copyright (C) 2008 Linas Vepstas@*
+Copyright (C) 2004,2005 Maurizio Boriani@*
+Copyright (C) 2008,2010 Linas Vepstas@*
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -57,9 +56,8 @@ by the Free Software Foundation.
 @page
 @vskip 0pt plus 1filll
 @vskip 0pt plus 1filll
-Copyright @copyright{} 2004 Maurizio Boriani
-Copyright @copyright{} 2005 Maurizio Boriani
-Copyright @copyright{} 2008 Linas Vepstas
+Copyright @copyright{} 2004,2005 Maurizio Boriani
+Copyright @copyright{} 2008,2010 Linas Vepstas
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -87,7 +85,7 @@ This reference manual documents Guile DBI, Guile Data Base Interface.
 It describes how to use Guile DBI and how to write new dbd database 
 drivers.
 
-This Info file contains edition 1.1 of the reference
+This Info file contains edition @value{VERSION} of the reference
 manual, corresponding to Guile DBI version @value{VERSION}.
 
 @end ifnottex
@@ -103,12 +101,12 @@ manual, corresponding to Guile DBI version @value{VERSION}.
 @chapter Introduction
 
 guile-dbi provides a simple, generic, easy-to-use scheme/guile interface
-to SQL databases, such as Postgres or MySQL.
+to SQL databases, such as Postgres, MySQL or SQLite.
 
 The system is split into two parts: the DBI (database independent)
 part, which provides the scheme interfaces, and the DBD (database
 dependent) plugins, which connect to the actual SQL server. Currently,
-there are DBD backends for Postgres on MySQL.
+there are DBD backends for Postgres, MySQL and SQLite3.
 
 @section History
 
@@ -144,13 +142,47 @@ and @code{dbi-get_row}.
 
 @*
 Guile DBI supports any database for which a dbd backend is written.
-Currently, these are MySQL and Postgres.
+Currently, these are MySQL, Postgres and SQLite.
 
-Below follows an example usage with the MySQL database:
+Here's an example usage, using SQLite3:
+@example
+(use-modules (dbi dbi))
+
+;; Log into the database.
+(define db-obj (dbi-open "sqlite3" "my-example-db"))
+
+;; Create a table.
+(dbi-query db-obj "create table hellotable(id int, name varchar(15))")
+
+;; Look at the return status of the last SQL command
+(display db-obj) (newline)
+
+;; Populate the table with values.
+(dbi-query db-obj "insert into hellotable ('id', 'name') values('33', 'ola')")
+(dbi-query db-obj "insert into hellotable ('id', 'name') values('34', 'dzien dobre')")
+(dbi-query db-obj "insert into hellotable ('id', 'name') values('44', 'annyong haseyo')")
+(display db-obj) (newline)
+
+;; Display each of the rows of the table, in turn.
+(dbi-query db-obj "select * from hellotable")
+(display db-obj) (newline)
+(write (dbi-get_row db-obj)) (newline)
+(write (dbi-get_row db-obj)) (newline)
+(write (dbi-get_row db-obj)) (newline)
+(write (dbi-get_row db-obj)) (newline)
+
+;; Close the database.
+(dbi-close db-obj)
+(display db-obj) (newline)
+
+@end example
+
+Here's another example, using the MySQL database. This example assumes
+that the MySQL server is running, and that a table named "pippo" has 
+already been created and populated with data:
 
 @example
-#!/usr/bin/guile \
--e main -s
+#!/usr/bin/guile -e main -s
 !#
 
 (use-modules (dbi dbi))
@@ -276,7 +308,7 @@ typedef struct g_db_handle
 @end example
 
 @itemize @bullet
-@item @code{bcknd} stores backend name (i.e. mysql or postgresql...).
+@item @code{bcknd} stores backend name (e.g. mysql, postgresql, sqlite, ...).
 @item @code{constr} string, stores the backend connection string. This
 is not touched by guile-dbi, but is passed ``as is'' to the databse plugin.
 @item @code{status} this is a pair which is used to return information from
@@ -343,9 +375,9 @@ reference to linked dbd is decremented until is 0.
 @node How to write plugins, , How plugins are loaded, Internals and Database Drivers
 @section How to write plugins
 
-Writing a plugin is fairly easy (have a look at mysql or postgres dbd source 
-code...). You will need to supply a few functions with appropriiately
-chosen names.
+Writing a plugin is fairly easy (have a look at the mysql, postgres or
+sqlite dbd source code). You will need to supply a few functions with 
+appropriiately chosen names.
 
 @*
 These are the functions and return types you should supply for 

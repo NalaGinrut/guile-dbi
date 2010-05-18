@@ -1,6 +1,8 @@
-Version 2.1.3: (2010-05-18)
+
+Version 2.1.3: (2010-05-18):
 	* Remove deprecated header file guile/gh.h from test case.
 	* Addition of sqlite3-dbd from Julian Kalbhenn <jkal@gmx.net> and tantalum@online.de 
+	* Updated documentation, example usage.
 
 Version 2.1.2 (2008-11-24):
 	* Patch from Mike Gran, fixes function names in assert.
