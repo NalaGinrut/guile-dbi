@@ -1,8 +1,0 @@
-Maurizio Boriani <baux@member.fsf.org>
- Main design and initial implementation.
-
-Linas Vepstas <linasvepstas@gmail.com>
-        Numerous bug fixes.
-
-<jkal@gmx.net>
- sqlite3 backend driver implementation
