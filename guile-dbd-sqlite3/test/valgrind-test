@@ -1,3 +1,0 @@
-# running this script checks for memory-leaks
-# usage: valgrind-test guile-source-file-name
-valgrind --suppressions=valgrind.supp --tool=memcheck --leak-check=yes guile $1
