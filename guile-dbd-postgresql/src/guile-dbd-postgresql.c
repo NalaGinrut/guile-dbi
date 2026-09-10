@@ -461,13 +461,12 @@ static SCM getrow_for_params (gdbi_db_handle_t *dbh)
         value = scm_from_locale_stringn (vstr, vlen);
         break;
       }
-      {
-        char msg[101];
-        snprintf (msg, 100, "unknown field type %d for %s", type, fname);
-        dbh->status = scm_cons (scm_from_int (1), scm_from_utf8_string (msg));
-        pgsqlP->lget++;
-        return SCM_BOOL_F;
-      }
+
+      char msg[101];
+      snprintf (msg, 100, "unknown field type %d for %s", type, fname);
+      dbh->status = scm_cons (scm_from_int (1), scm_from_utf8_string (msg));
+      pgsqlP->lget++;
+      return SCM_BOOL_F;
     }
 
     retrow = scm_append (scm_list_2 (
@@ -675,13 +674,12 @@ SCM __postgresql_getrow_g_db_handle (gdbi_db_handle_t *dbh)
         value = scm_from_locale_stringn (vstr, vveclen);
         break;
       }
-      {
-        char msg[101];
-        snprintf (msg, 100, "unknown field type %d for %s", type, fname);
-        dbh->status = scm_cons (scm_from_int (1), scm_from_utf8_string (msg));
-        pgsqlP->lget++;
-        return SCM_BOOL_F;
-      }
+
+      char msg[101];
+      snprintf (msg, 100, "unknown field type %d for %s", type, fname);
+      dbh->status = scm_cons (scm_from_int (1), scm_from_utf8_string (msg));
+      pgsqlP->lget++;
+      return SCM_BOOL_F;
     }
 
     retrow = scm_append (scm_list_2 (
