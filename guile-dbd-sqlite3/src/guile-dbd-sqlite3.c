@@ -64,7 +64,7 @@ SCM convert_row (sqlite3_stmt *stmt)
     switch (type)
     {
     case SQLITE_NULL:
-      value = SCM_UNSPECIFIED;
+      value = SCM_BOOL_F;
       break;
 
     case SQLITE_INTEGER:

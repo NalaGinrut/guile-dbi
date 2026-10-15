@@ -361,7 +361,7 @@ SCM static getrow_for_stmt (gdbi_db_handle_t *dbh)
     /* 1. SQL NULL */
     if (mysqlP->is_null[f])
     {
-      value = SCM_UNSPECIFIED;
+      value = SCM_BOOL_F;
     }
     else
     {
@@ -394,7 +394,7 @@ SCM static getrow_for_stmt (gdbi_db_handle_t *dbh)
         value = scm_from_locale_stringn ((char *)b->buffer, *b->length);
         break;
       default:
-        value = SCM_UNSPECIFIED;
+        value = SCM_BOOL_F;
         break;
       }
     }

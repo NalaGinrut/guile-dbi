@@ -332,7 +332,7 @@ static SCM getrow_for_params (gdbi_db_handle_t *dbh)
     /* NULL — mirrors MySQL getrow_for_stmt is_null[f] check */
     if (PQgetisnull (pgsqlP->res, pgsqlP->lget, f))
     {
-      value = SCM_UNSPECIFIED;
+      value = SCM_BOOL_F;
       retrow = scm_append (scm_list_2 (
         retrow, scm_list_1 (scm_cons (scm_from_locale_string (fname), value))));
       continue;
@@ -561,7 +561,7 @@ SCM __postgresql_getrow_g_db_handle (gdbi_db_handle_t *dbh)
 
     if (PQgetisnull (pgsqlP->res, pgsqlP->lget, f))
     {
-      value = SCM_UNSPECIFIED;
+      value = SCM_BOOL_F;
       retrow = scm_append (scm_list_2 (
         retrow, scm_list_1 (scm_cons (scm_from_locale_string (fname), value))));
       continue;
